@@ -58,7 +58,9 @@ public class WeatherService implements WeatherServiceImpl {
         WeatherInfo weatherInfo = new WeatherInfo();
         weatherInfo.setData(result);
         WeatherInfo save = weatherInfoRepo.save(weatherInfo);
+        log.info(save.toString());
         return save;
+
 
 
     }
