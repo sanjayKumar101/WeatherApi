@@ -11,8 +11,8 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "weatherInfo")
-public class WeatherInfo {
+@Table(name = "saveWeatherApiData")
+public class SaveWeatherApiData {
     @Id
     private int id;
     private String cityName;

@@ -2,7 +2,7 @@ package com.weather.weatherApplication.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.weather.weatherApplication.entity.Weather;
-import com.weather.weatherApplication.entity.WeatherInfo;
+import com.weather.weatherApplication.entity.SaveWeatherApiData;
 import com.weather.weatherApplication.service.WeatherService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +34,7 @@ public class WeatherController {
 
     @GetMapping("/info")
     public ResponseEntity<?> getWeatherInfo() throws JsonProcessingException {
-        WeatherInfo[] weatherInfo = weatherService.saveWeatherApiData().toArray(new WeatherInfo[0]);
+        SaveWeatherApiData[] weatherInfo = weatherService.saveWeatherApiData().toArray(new SaveWeatherApiData[0]);
         return new ResponseEntity<>(weatherInfo,HttpStatus.OK);
     }
 }
