@@ -7,10 +7,8 @@ import lombok.*;
 @Entity
 @Getter
 @Setter
-@ToString
-@NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@NoArgsConstructor
 @Table(name = "weather")
 public class Weather {
     @Id

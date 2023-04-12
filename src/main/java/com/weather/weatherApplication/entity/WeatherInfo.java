@@ -1,15 +1,16 @@
 package com.weather.weatherApplication.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Getter
 @Setter
-@ToString
-@NoArgsConstructor
+@Getter
 @AllArgsConstructor
-@Builder
+@NoArgsConstructor
 @Table(name = "weatherInfo")
 public class WeatherInfo {
     @Id
