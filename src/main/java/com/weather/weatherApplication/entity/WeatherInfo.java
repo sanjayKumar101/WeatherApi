@@ -13,7 +13,7 @@ import lombok.*;
 @Table(name = "weatherInfo")
 public class WeatherInfo {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String data;
+    private String cityName;
+    private double temp;
 }

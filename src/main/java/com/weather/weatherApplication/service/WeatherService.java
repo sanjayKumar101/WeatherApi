@@ -1,5 +1,8 @@
 package com.weather.weatherApplication.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.weather.weatherApplication.entity.WeatherInfo;
 import com.weather.weatherApplication.repo.WeatherInfoRepo;
 import com.weather.weatherApplication.repo.WeatherRepo;
@@ -49,20 +52,17 @@ public class WeatherService implements WeatherServiceImpl {
         return modelMapper.map(weather,WeatherDto.class);
     }
 
-    public WeatherInfo getWeatherInfo(){
+    public List<WeatherInfo> saveWeatherData() throws JsonProcessingException {
         String url = "http://localhost:9090/weathers";
         RestTemplate restTemplate = new RestTemplate();
         String result = restTemplate.getForObject(url,String.class);
-        log.info(result);
+        log.info("result is :{}"+result);
+        ObjectMapper objectMapper = new ObjectMapper();
+        List<WeatherInfo> weatherList = objectMapper.readValue(result, new TypeReference<List<WeatherInfo>>(){});
 
-        WeatherInfo weatherInfo = new WeatherInfo();
-        weatherInfo.setData(result);
-        WeatherInfo save = weatherInfoRepo.save(weatherInfo);
-        log.info(save.toString());
-        return save;
-
-
-
+        log.info("save json string into database : {}"+weatherList);
+        weatherInfoRepo.saveAll(weatherList);
+        return weatherList;
     }
 
 }

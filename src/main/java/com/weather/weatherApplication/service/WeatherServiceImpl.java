@@ -1,5 +1,6 @@
 package com.weather.weatherApplication.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.weather.weatherApplication.dto.WeatherDto;
 import com.weather.weatherApplication.entity.WeatherInfo;
 
@@ -13,7 +14,8 @@ public interface WeatherServiceImpl {
     //get weather list
     List<WeatherDto> getAllWeatherList();
 
-    WeatherInfo getWeatherInfo();
+
+    List<WeatherInfo> saveWeatherData() throws JsonProcessingException;
 
 
 }
